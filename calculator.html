@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        body{
+            min-height: 100vh;
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:  linear-gradient(45deg, #514848, #3a4452);
+        }
+
+
+        #mainbox{
+            padding:15px;
+            box-shadow: 10 20 15px #000 ;
+            border: 2px solid rgb(116, 114, 114);
+            border-radius: 30px;
+        }
+
+        #calculator{
+            width:360px;
+            border:none;
+            outline:none;
+            padding:20px;
+            margin:10px;
+            background: transparent;
+            color:white;
+            font-size: 40px;
+            text-align: right;
+            cursor: pointer;
+
+        }
+
+        .numbers{
+            width: 60px;
+            height: 60px;
+            margin:10px;
+            background: transparent;
+            color:white;
+            font-size:15px;
+            font-weight: 600;
+            border:0;
+            box-shadow: -5px -6px 15px black;
+            border-radius: 50%;
+            /* outline: 1px solid black; */
+            outline-offset: 3px;
+        }
+
+        .numbers:active{
+            background:#000;
+            transform: translate(2px, 2px); 
+
+
+        }
+
+        .opr{
+            width: 60px;
+            height: 60px;
+            margin:10px;
+            background: transparent;
+            color:#fbff00;
+            font-size:15px;
+            border:0;
+            box-shadow: -5px -6px 15px black;
+            border-radius: 50%;
+            /* outline: 1px solid black; */
+            outline-offset: 3px;
+            background: #1e1919;
+            font-weight: 700;
+        }
+
+        .equal{
+            width: 60px;
+            height: 60px;
+            margin:10px;
+            background: transparent;
+            color:#fbff00;
+            font-size:15px;
+            border:0;
+            box-shadow: -5px -6px 15px black;
+            border-radius: 50%;
+            /* outline: 1px solid black; */
+            outline-offset: 3px;
+            background:orangered;
+            font-weight: 900;
+
+
+        }
+
+        .number{
+            width: 60px;
+            height: 60px;
+            margin:10px;
+            background: transparent;
+            color:#fbff00;
+            font-size:15px;
+            border:0;
+            box-shadow: -5px -6px 15px black;
+            border-radius: 50%;
+            /* outline: 1px solid black; */
+            outline-offset: 3px;
+            background: #1e1919;
+            font-weight: 700;
+
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="mainbox">
+
+        <!--All button starts here-->
+
+
+            <input id="calculator">
+    <br>
+    <br>
+    <button class="number" onClick='del()'>Clear</button>
+    <button class="opr" onClick="fun('pct')">%</button>
+    <button class="opr" onClick="clearDisplay()">Del</button>
+    <button class="number" onClick="fun('/')">/</button>
+    <br>
+    <button class="numbers" onClick="fun(7)">7</button>
+    <button class="numbers" onClick="fun(8)">8</button>
+    <button class="numbers" onClick="fun(9)">9</button>
+    <button class="opr" onClick="fun('*')">*</button>
+    <br>
+   
+    <button class="numbers" onClick="fun(4)">4</button>
+    <button class="numbers" onClick="fun(5)">5</button>
+    <button class="numbers" onClick="fun(6)">6</button>
+    <button class="opr" onClick="fun('-')">-</button>
+
+    <br>
+    <button class="numbers" onClick="fun(1)">1</button>
+    <button class="numbers" onClick="fun(2)">2</button>
+    <button class="numbers" onClick="fun(3)">3</button>
+    <button class="opr" onClick="fun('+')">+</button>
+
+    <br>
+    
+    <button class="numbers" onClick="fun(0)">0</button>
+    <button class="opr" onClick="fun('.')">.</button>
+    
+    
+    
+    
+    
+    <button class="opr" onClick='fun("(")'>(</button>
+    <button class="opr" onClick='fun(")")'>)</button>
+    <button class="equal" onClick="calculate()">=</button>
+    
+
+    <!--All button Ends here-->
+
+    
+</div>
+
+<!--Java Script starts from here-->
+    
+    <script>
+        function fun(x){
+            document.getElementById('calculator').value +=x;
+
+        }
+
+       
+        function calculate(){
+
+            try{
+            res=eval(document.getElementById('calculator').value);
+        }
+
+        catch(Exception){
+            alert('Error');
+
+            document.getElementById('calculator').value = '';
+
+        }
+
+            document.getElementById('calculator').value = res;
+        }
+
+        function del(){
+
+            x= document.getElementById('calculator').value; 
+            document.getElementById('calculator').value = x.slice(0,x.length-1); 
+        }
+
+        function clearDisplay() {
+            document.getElementById('calculator').value= '';
+        }
+
+      
+
+    </script>
+    
+</body>
+</html>
